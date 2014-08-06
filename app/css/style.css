@@ -1,0 +1,197 @@
+/* :-webkit-full-screen, :-moz-full-screen, :fullscreen {
+  background: black;
+  width: 100%;
+  height: 100%;
+}
+esconde o cabeçalho da página, quando em tela cheia
+:fullscreen header {
+    display: none;
+}
+:-webkit-full-screen.video-content, :-moz-full-screen.video-content, :fullscreen.video-content{
+  width:100%;
+  -webkit-transition: all 2s 2s ease-in-out;
+  -moz-transition: all 2s 2s ease-in-out;
+  -o-transition: all 2s 2s ease-in-out;
+  transition: all 2s 2s ease-in-out;
+}
+:-webkit-full-screen.video-content, :-moz-full-screen.video-content, :fullscreen.video-content{
+  width:100%;
+  height: 100%;
+} */
+
+
+.hide{
+  display: none;
+}
+.canvas-image {
+  width: 200px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  right: 12.5%;
+  border: 5px solid #dedede;
+}
+.canvas-image.mobile{
+  bottom: initial;
+  top: 0;
+  right: 0;
+}
+/* aumenta o tamanho da fonte, quando em tela cheia */
+:fullscreen {
+  width:100%;
+}
+/* vídeo em tela cheia */
+video:fullscreen {
+    width: 100%;
+    height: 100%;
+}
+/* Global Styles */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: lighter;
+  font-size: 16px;
+}
+.btn {
+  width: 90%;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  background: #19ACCA;
+  margin: 10px auto;
+  color: #FFF;
+  font-weight: bold;
+  border: none;
+  position: relative;
+  left: 5%;
+}
+
+.flash-content {
+  display: none;
+  background: transparent;
+}
+.flash-content.flash-effect, .flash-content.flash-effect {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: #fff;
+  z-index: 999;
+  float: left;
+}
+
+.video-content {
+  width: 100%;
+}
+
+/* COUNTDOWN PHOTO */
+  /* :-webkit-full-screen .countdown-photo, :-moz-full-screen .countdown-photo, :fullscreen .countdown-photo{
+    position: absolute;
+    left: 44%;
+    top: 33%;
+    z-index: 100;
+    font-weight: bold;
+    font-size: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+  } */
+  .countdown-photo, .countdown-photo:fullscreen {
+    position: absolute;
+    left: 33%;
+    right: 33%;
+    top: 33%;
+    z-index: 100;
+    font-weight: bold;
+    font-size: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    width: 500px;
+    text-align: center;
+  }
+/* COUNTDOWN PHOTO */
+
+
+/* BATTERY */
+  @font-face {
+      font-family: "Battery";
+      font-style: normal;
+      font-weight: normal;
+      src: url("fonts/battery.eot#iefix") format("embedded-opentype"), url("fonts/battery.woff") format("woff"), url("fonts/battery.ttf") format("truetype"), url("fonts/battery.svg#battery") format("svg");
+  }
+  .demo-wrapper .attention {
+      background-color: #C0392B;
+      border-radius: 3px;
+      color: #FFFFFF;
+      margin: 10px auto 0;
+      padding: 15px;
+      width: 500px;
+  }
+  .demo-wrapper .battery {
+      background-color: #FFFFFF;
+      border: 5px solid #000000;
+      height: 40px;
+      margin: 50px auto;
+      position: relative;
+      width: 100px;
+  }
+  .demo-wrapper .battery:after {
+      background-color: #000000;
+      content: "";
+      display: block;
+      height: 20px;
+      position: absolute;
+      right: -12px;
+      top: 10px;
+      width: 10px;
+  }
+  .demo-wrapper .battery .level {
+      height: 100%;
+      width: 2%;
+  }
+  .demo-wrapper .battery .level.high {
+      background-color: #27AE60;
+  }
+  .demo-wrapper .battery .level.med {
+      background-color: #E67E22;
+  }
+  .demo-wrapper .battery .level.low {
+      background-color: #E74C3C;
+  }
+  .demo-wrapper .battery .level.charging {
+      background-color: #27AE60;
+      text-align: center;
+      width: 100%;
+  }
+  .demo-wrapper .battery .level.charging:before {
+      color: #000000;
+      content: "+";
+      display: block;
+      font-family: 'Battery';
+      font-size: 25px;
+      height: 100%;
+      line-height: 40px;
+      width: 100%;
+  }
+/* BATTERY */
+
+/* EFFECTS */
+.flash-effect {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.flash-effect.active {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  background: #FFF;
+}
+/* EFFECTS */
+

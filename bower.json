@@ -1,0 +1,26 @@
+{
+  "name": "SocialShare",
+  "version": "0.0.5",
+  "homepage": "https://about.me/willmendesneto",
+  "authors": [
+    "willmendesneto <willmendesneto@gmail.com>"
+  ],
+  "description": "Social Share",
+  "keywords": [
+    "technology",
+    "development",
+    "network",
+    "html5",
+    "javascript",
+    "api",
+    "social"
+  ],
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "fastclick": "~0.6.11",
+    "zepto": "~1.1.3",
+    "normalize.css": "~3.0.1",
+    "ua.js": "git@github.com:g13n/ua.js.git"
+  }
+}

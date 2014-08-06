@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Wilson Mendes -- Developer -- @willmendesneto
+
+# THANKS
+
+    Wilson Mendes
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Javascript, HTML5 API
+    ZeptoJS, UA.js

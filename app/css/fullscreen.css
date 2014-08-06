@@ -1,0 +1,69 @@
+/* :-webkit-full-screen, :-moz-full-screen, :fullscreen {
+  background: black;
+  width: 100%;
+  height: 100%;
+}
+esconde o cabeçalho da página, quando em tela cheia
+:fullscreen header {
+    display: none;
+}
+:-webkit-full-screen.video-content, :-moz-full-screen.video-content, :fullscreen.video-content{
+  width:100%;
+  -webkit-transition: all 2s 2s ease-in-out;
+  -moz-transition: all 2s 2s ease-in-out;
+  -o-transition: all 2s 2s ease-in-out;
+  transition: all 2s 2s ease-in-out;
+}
+:-webkit-full-screen.video-content, :-moz-full-screen.video-content, :fullscreen.video-content{
+  width:100%;
+  height: 100%;
+} */
+
+/* aumenta o tamanho da fonte, quando em tela cheia */
+:-webkit-full-screen, :-moz-full-screen, :fullscreen {
+  width:100%;
+  background: #FFF !important;
+}
+/* vídeo em tela cheia */
+#video-content:fullscreen {
+  width: 100%;
+  height: 100%;
+  background: #FFF !important;
+}
+
+#video-content video:fullscreen {
+  width: 100%;
+  height: 100%;
+}
+
+/* COUNTDOWN PHOTO */
+  /* :-webkit-full-screen .countdown-photo, :-moz-full-screen .countdown-photo, :fullscreen .countdown-photo{
+    position: absolute;
+    left: 44%;
+    top: 33%;
+    z-index: 100;
+    font-weight: bold;
+    font-size: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+  } */
+  .countdown-photo, .countdown-photo:fullscreen {
+    position: absolute;
+    left: 33%;
+    right: 33%;
+    top: 33%;
+    z-index: 100;
+    font-weight: bold;
+    font-size: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    width: 500px;
+    text-align: center;
+  }
+/* COUNTDOWN PHOTO */
+
+#video-content .canvas-image:fullscreen{
+  right: 12.5%;
+}

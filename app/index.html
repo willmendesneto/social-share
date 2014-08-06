@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 8]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Social">
+    <meta name="author" content="humans.txt">
+
+    <title>Social</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <!-- build:css({.tmp,app}) css/main.css -->
+    <link rel="stylesheet" type="text/css" href="bower_components/normalize.css/normalize.css"/>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/fullscreen.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+
+  <body>
+
+    <div class="flash-content"></div>
+    <div id="video-content" class="video-content flash-effect">
+      <span class="countdown-photo"></span>
+      <video autoplay id="video" width="100%" height="100%"></video>
+      <canvas id="canvas" class="canvas-image hide" width="640" height="480"></canvas>
+    </div>
+    <button class="btn trigger-event fullscreen" data-key="70">FULLSCREEN</button>
+    <button class="btn trigger-event take-picture" data-key="13">TIRAR FOTO</button>
+    <!-- Footer -->
+    <!-- build:js js/plugins.js -->
+    <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script type="text/javascript" src="bower_components/ua.js/src/ua.js"></script>
+    <!-- endbuild -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.3/zepto.min.js"></script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    window.Zepto || document.write('<script type="text/javascript" src="bower_components/zepto/zepto.min.js"><\/script>');
+    /*]]>*/
+    </script>
+
+    <!-- build:js({.tmp,app}) js/scripts.js -->
+    <script type="text/javascript" src="js/PageEvents.js"></script>
+    <script type="text/javascript" src="js/Battery.js"></script>
+    <script type="text/javascript" src="js/Storage.js"></script>
+    <script type="text/javascript" src="js/Fullscreen.js"></script>
+    <script type="text/javascript" src="js/Media.js"></script>
+    <script type="text/javascript" src="js/Network.js"></script>
+    <script type="text/javascript" src="js/WebSpeech.js"></script>
+    <script type="text/javascript" src="js/MediaSharedStream.js"></script>
+    <script type="text/javascript" src="js/App.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <!-- endbuild -->
+  </body>
+
+</html>
