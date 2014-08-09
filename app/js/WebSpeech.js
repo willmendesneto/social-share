@@ -47,7 +47,7 @@
               console.log('Recognised: ' + str);
 
               // If the user said 'foto' then app take a user picture
-              if (WebSpeech.userSaid(str, 'facebook') || WebSpeech.userSaid(str, 'foto') || WebSpeech.userSaid(str, 'photo')) {
+              if (WebSpeech.userSaid(str, 'self') || WebSpeech.userSaid(str, 'selfie')) {
                 PageEvents.triggerKeyboardEvent(13);
               }
             }
