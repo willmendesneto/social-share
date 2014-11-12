@@ -71,7 +71,7 @@
       } else if (/mozilla/.test(browser)) {
         this.browser = 'mozilla';
       } else {
-        alert('Seu navegador não suporta as API\'s utilizadas nesta aplicação.');
+        alert('Your browser doesn\'t supports API\'s useds in this application.');
       }
     },
 
@@ -240,7 +240,7 @@
       var opts = {
         postUrl: 'https://graph.facebook.com/me/photos?access_token=' + pageAccessToken,
         pageAccessToken: pageAccessToken,
-        message: 'TDC 2014 - Trilha Frontend =).'
+        message: 'Insert your photo message here.'
       };
 
       var params = this.createFormData(opts, dataURL);
@@ -255,7 +255,7 @@
         cache: false,
         success: function (response) {
           console.log(response);
-          alert('Foto enviada para o Facebook!');
+          alert('Photo published at Facebook!');
         },
         error: function (shr, status, data) {
           console.log('Something is wrong ' + data + ' Status ' + shr.status);
@@ -415,7 +415,7 @@
       }
       photos.push({photo: dataURL});
       Storage.set('photos', photos);
-      alert('Foto armazenada localmente.');
+      alert('Photo stored locally.');
     },
 
   };
