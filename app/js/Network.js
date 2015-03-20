@@ -10,7 +10,7 @@
    * @type {Object}
    */
   var Network = {},
-      Storage = new window.Storage({secret: 'tdc-2014', storageType: 'localStorage'})
+      Storage = new window.Storage({secret: 'storage-secret-key', storageType: 'localStorage'})
   ;
 
   Network = {

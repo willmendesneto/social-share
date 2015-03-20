@@ -26,9 +26,9 @@
         WebSpeech.recognizing = true;
       };
       WebSpeech.voiceCommand.onend = function(){
-        console.log('onend');
-        if(!self.recognizing) {
-          this.voiceCommand.start();
+        if(!WebSpeech.recognizing) {
+          WebSpeech.recognizing = true;
+          WebSpeech.voiceCommand.start();
         }
       };
 
@@ -37,8 +37,6 @@
         // Define a threshold above which we are confident(!) that the recognition results are worth looking at
         var confidenceThreshold = 0.5;
         var resultsLength = e.results.length;
-
-        console.log('onresult');
 
         // Check each result starting from the last one
         for (var i = e.resultIndex; i < resultsLength; ++i) {
@@ -77,7 +75,7 @@
      * @return {[type]} [description]
      */
     startSpeechRecognition: function() {
-      if(!self.recognizing) {
+      if(!this.recognizing) {
         this.voiceCommand.start();
       }
     },
@@ -88,7 +86,7 @@
      */
     stopSpeechRecognition: function() {
       this.voiceCommand.stop();
-      self.recognizing = false;
+      this.recognizing = false;
       alert('not recognising');
     },
 

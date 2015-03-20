@@ -28,8 +28,16 @@
 
     FB: null,
 
+    // CONFIGURE THESE ITEMS WITH YOUR FANPAGE AND FANPAGE ALBUM INFORMATIONS.
+    backend: {
+      fanPageId: "281362542059651",
+      fanPageAccessToken: "",
+      idAlbum: "370302153165689"
+    },
+
     opts: {
       facebook: {
+        FB_VERIFICATION: false,
         accessToken: null,
         userInfo: null
       }
@@ -108,6 +116,7 @@
       this.loadAsyncListFiles();
       this.initGetUserMedia();
       this.initFullScreen();
+      this.initNetwork();
       this.initFB();
 
       this.initPageEvents();
@@ -128,7 +137,7 @@
     },
 
     initNetwork: function() {
-      Network.init();
+      window.Network.init();
     },
 
     /**
@@ -173,6 +182,85 @@
       });
     },
 
+
+    /**
+     * Returns user's fanpage list
+     * @return {[type]} [description]
+     */
+    fbGetFanpageInfo: function(){
+      this.FB.api( this.opts.facebook.userInfo.id +'/accounts', function (response) {
+        if (response && !response.error) {
+          /* handle the result */
+          var fanPagesLength = response.data.length,
+              fanpage
+          ;
+          console.log('fanpages: ');
+          console.log(response.data);
+
+          for (var i=0, l=fanPagesLength; i<l; i++) {
+            fanpage = response.data[i];
+            if( fanpage.id === App.backend.fanPageId){
+              console.log('fanpage found!');
+              App.fbGetAlbuns(fanpage.id, fanpage.access_token);
+            }
+          }
+          console.log(response);
+        }
+      });
+    },
+
+    fbGetAlbuns: function(pageId, pageAccessToken){
+
+      pageId = pageId || 'me';
+
+      this.FB.api('/' + pageId + '/albums', function(resp) {
+
+        console.log('Albums: ');
+        console.log(resp.data);
+
+        var albumsLength = resp.data.length, album;
+        for (var i=0, l=albumsLength; i<l; i++) {
+          album = resp.data[i];
+          if( album.id === App.backend.idAlbum){
+            console.log('fanpage album found!');
+            App.fbSendPhotoToAlbum(pageAccessToken);
+          }
+        }
+      });
+    },
+
+    fbSendPhotoToAlbum: function(pageAccessToken){
+
+      //var pageAccessToken = App.FB.getAccessToken();
+      var opts = {
+        postUrl: 'https://graph.facebook.com/' + App.backend.idAlbum+'/photos?access_token=' + pageAccessToken,
+        pageAccessToken: pageAccessToken,
+        message: 'Insert your photo message here fbSendPhotoToAlbum.'
+      };
+
+      var params = this.createFormData(opts, App.dataURL);
+
+      /* make the API call */
+      $.ajax({
+        url: opts.postUrl,
+        type: 'POST',
+        data: params,
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function (response) {
+          console.log(response);
+          alert('Photo published in Facebook Fanpage Album!');
+        },
+        error: function (shr, status, data) {
+          console.log('Something is wrong ' + data + ' Status ' + shr.status);
+        },
+        complete: function () {
+          console.log('photo already sent for Facebook Fanpage Album!');
+        }
+      });
+    },
+
     // Convert a data URI to blob
     dataURItoBlob: function(dataURI) {
       var byteString = atob(dataURI.split(',')[1]);
@@ -199,6 +287,24 @@
       formParams.append('source', blob);
       formParams.append('message', opts.message);
       return formParams;
+    },
+
+    fbCheckDoesLike: function(pageId) {
+      this.FB.api({ method: 'pages.isFan', page_id: pageId }, function(resp) {
+        console.log(resp);
+        console.log(resp ? 'You like it.' : 'You don\'t like it.');
+      });
+    },
+
+
+    /**
+     * Logout at facebook
+     * @return {[type]} [description]
+     */
+    fbLogout: function() {
+      FB.logout(function(){
+        document.location.reload();
+      });
     },
 
     /**
@@ -235,7 +341,27 @@
       });
     },
 
-    fbSendPhotoFromTimeline: function(dataURL){
+    /**
+     * Get user profile photo at facebook
+     * @return {[type]} [description]
+     */
+    fbGetProfilePhoto:  function() {
+      this.FB.api('/me/picture?type=normal', function(response) {
+        console.log(response);
+      });
+    },
+
+    fbQuery: function(){
+      var params = {
+        method: 'fql.query',
+        query: 'SELECT name FROM user WHERE uid=4'
+      };
+      FB.api(params, function(response) {
+        console.log('API Callback', response);
+      });
+    },
+
+    fbSendPhotoFromTimeline: function(){
       var pageAccessToken = App.FB.getAccessToken();
       var opts = {
         postUrl: 'https://graph.facebook.com/me/photos?access_token=' + pageAccessToken,
@@ -243,7 +369,7 @@
         message: 'Insert your photo message here.'
       };
 
-      var params = this.createFormData(opts, dataURL);
+      var params = this.createFormData(opts, App.dataURL);
 
       /* make the API call */
       $.ajax({
@@ -394,26 +520,39 @@
         // Draw whatever is in the video element on to the canvas.
         $self.ctx.drawImage($self.video, 0, 0);
         //  Get image quality based in connection
-        var imageQuality = !!Network.isAFastConnection() ? 100 : 72;
+        var imageQuality = !!window.Network.isAFastConnection() ? 100 : 72;
         // Create a data url from the canvas image.
         App.dataURL = $self.canvas.toDataURL('image/png', imageQuality);
-        console.log(App.dataURL);
         // Call our method to save the data url to an image.
-        if (Network.isConnected()) {
-          $self.fbSendPhotoFromTimeline(App.dataURL);
+
+        if (window.Network.isConnected()) {
+          //  Send photo from user timeline
+          //$self.fbSendPhotoFromTimeline();
+
+          // App.backend.imageUrl = response.data.imageUrl;
+          // App.backend.fanPageId = response.data.fanPageId;
+          // App.backend.idAlbum = response.data.idAlbum;
+          // App.backend.pathAlbum = response.data.pathAlbum;
+
+          $self.fbSendPhotoFromFanpageAlbum();
+
         } else {
-          $self.localStore(App.dataURL);
+          $self.localStore();
         }
       }
     },
 
-    localStore: function(dataURL) {
+    fbSendPhotoFromFanpageAlbum: function(){
+      App.fbGetFanpageInfo();
+    },
+
+    localStore: function() {
       Storage = new Storage({secret: 'tdc-2014', storageType: 'localStorage'});
       var photos = Storage.get('photos');
       if (!photos) {
         photos = [];
       }
-      photos.push({photo: dataURL});
+      photos.push({photo: App.dataURL});
       Storage.set('photos', photos);
       alert('Photo stored locally.');
     },
