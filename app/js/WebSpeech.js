@@ -25,12 +25,20 @@
       WebSpeech.voiceCommand.onstart = function() {
         WebSpeech.recognizing = true;
       };
+      WebSpeech.voiceCommand.onend = function(){
+        console.log('onend');
+        if(!self.recognizing) {
+          this.voiceCommand.start();
+        }
+      };
 
       // Process the results when they are returned from the recogniser
       WebSpeech.voiceCommand.onresult =  function(e) {
         // Define a threshold above which we are confident(!) that the recognition results are worth looking at
         var confidenceThreshold = 0.5;
         var resultsLength = e.results.length;
+
+        console.log('onresult');
 
         // Check each result starting from the last one
         for (var i = e.resultIndex; i < resultsLength; ++i) {
@@ -47,7 +55,7 @@
               console.log('Recognised: ' + str);
 
               // If the user said 'foto' then app take a user picture
-              if (WebSpeech.userSaid(str, 'self') || WebSpeech.userSaid(str, 'selfie')) {
+              if (WebSpeech.userSaid(str, 'self') || WebSpeech.userSaid(str, 'selfi') || WebSpeech.userSaid(str, 'selfie')) {
                 PageEvents.triggerKeyboardEvent(13);
               }
             }
