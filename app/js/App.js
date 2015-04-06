@@ -30,9 +30,9 @@
 
     // CONFIGURE THESE ITEMS WITH YOUR FANPAGE AND FANPAGE ALBUM INFORMATIONS.
     backend: {
-      fanPageId: "281362542059651",
+      fanPageId: "YOURFANPAGEIDHERE",
       fanPageAccessToken: "",
-      idAlbum: "370302153165689"
+      idAlbum: "YOURFANPAGEALBUMIDHERE"
     },
 
     opts: {
