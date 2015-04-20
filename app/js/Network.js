@@ -36,13 +36,17 @@
      * Verification for send image with high quality or not
      * @return {Boolean} [description]
      */
-    isAFastConnection: function(){
+    isAFastConnection: function(chosenBrowserIsFirefox){
       if (!this.hasInternet) {
         return false;
       }
 
+      if (!chosenBrowserIsFirefox) {
+        return !chosenBrowserIsFirefox;
+      }
+
       // create a custom object if navigator.connection isn't available
-      var connection = navigator.connection || {'type': 0 };
+      var connection = navigator.connection || {type: 0 };
 
       if (connection.type === 2 || connection.type === 1) {
         //wifi/ethernet

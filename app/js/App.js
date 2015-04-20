@@ -4,6 +4,10 @@
 
   // Our object that will hold all of the functions.
   var App = {}, Fullscreen, WebSpeech;
+  var Browsers = {
+    Chrome: 'chrome',
+    Firefox: 'mozilla'
+  };
 
   App = {
     options: {
@@ -75,9 +79,9 @@
     browserVerification: function(){
       var browser = navigator.userAgent.toLowerCase();
       if(/chrome/.test(browser)){
-        this.browser = 'chrome';
+        this.browser = Browsers.Chrome;
       } else if (/mozilla/.test(browser)) {
-        this.browser = 'mozilla';
+        this.browser = Browsers.Firefox;
       } else {
         alert('Your browser doesn\'t supports API\'s useds in this application.');
       }
@@ -520,21 +524,21 @@
         // Draw whatever is in the video element on to the canvas.
         $self.ctx.drawImage($self.video, 0, 0);
         //  Get image quality based in connection
-        var imageQuality = !!window.Network.isAFastConnection() ? 100 : 72;
+        var imageQuality = !!window.Network.isAFastConnection(this.browser === Browsers.Firefox) ? 100 : 72;
         // Create a data url from the canvas image.
         App.dataURL = $self.canvas.toDataURL('image/png', imageQuality);
         // Call our method to save the data url to an image.
 
         if (window.Network.isConnected()) {
           //  Send photo from user timeline
-          //$self.fbSendPhotoFromTimeline();
+          $self.fbSendPhotoFromTimeline();
 
           // App.backend.imageUrl = response.data.imageUrl;
           // App.backend.fanPageId = response.data.fanPageId;
           // App.backend.idAlbum = response.data.idAlbum;
           // App.backend.pathAlbum = response.data.pathAlbum;
 
-          $self.fbSendPhotoFromFanpageAlbum();
+          //$self.fbSendPhotoFromFanpageAlbum();
 
         } else {
           $self.localStore();
