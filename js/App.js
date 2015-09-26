@@ -370,7 +370,7 @@
       var opts = {
         postUrl: 'https://graph.facebook.com/me/photos?access_token=' + pageAccessToken,
         pageAccessToken: pageAccessToken,
-        message: 'Insert your photo message here.'
+        message: 'Valeu DevFest Goías!'
       };
 
       var params = this.createFormData(opts, App.dataURL);

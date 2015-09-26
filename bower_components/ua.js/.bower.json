@@ -1,0 +1,13 @@
+{
+  "name": "ua.js",
+  "homepage": "https://github.com/g13n/ua.js",
+  "_release": "fbfb328e1e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fbfb328e1eb9d85f65b79410c722cb77eaf26908"
+  },
+  "_source": "git@github.com:g13n/ua.js.git",
+  "_target": "*",
+  "_originalSource": "git@github.com:g13n/ua.js.git"
+}
