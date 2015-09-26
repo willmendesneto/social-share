@@ -524,7 +524,7 @@
         // Draw whatever is in the video element on to the canvas.
         $self.ctx.drawImage($self.video, 0, 0);
         //  Get image quality based in connection
-        var imageQuality = !!window.Network.isAFastConnection(this.browser === Browsers.Firefox) ? 100 : 72;
+        var imageQuality = !!window.Network.isAFastConnection() ? 100 : 72;
         // Create a data url from the canvas image.
         App.dataURL = $self.canvas.toDataURL('image/png', imageQuality);
         // Call our method to save the data url to an image.
