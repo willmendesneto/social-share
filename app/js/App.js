@@ -439,7 +439,7 @@
      */
     initGetUserMedia: function(){
 
-      var Media = new window.Media();
+      var Media = new window.Media(this.video);
       // Check for getUserMedia support.
       if (Media.apiExists) {
         // Get video stream.
