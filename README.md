@@ -1,6 +1,8 @@
 SOCIAL SHARE
 =================
-A simple way to use Facebook API in an app for send images for your Facebook timeline.
+A simple way to use Facebook API in an app for send images for your Facebook timeline. This content is related to the talk
+
+# [HTML5 API:  Hero, antagonist and your usage in real applications](https://docs.google.com/presentation/d/1J0fkxU3RzinOR0n3nMUMU3pzLcAfiNQzuTkeMFud21M/edit?usp=sharing)
 
 This app run WITHOUT BACKEND (Showing the power of Frontend)!
 
