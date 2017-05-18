@@ -1,0 +1,7 @@
+{
+  "port": 8000,
+  "https": true,
+  "injectChanges": true,
+  "files": ["./app/**/*.{html,css,js}"],
+  "server": { "baseDir": "./app" }
+}

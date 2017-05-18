@@ -16,10 +16,10 @@
 
   var $triggerEvent = $('.trigger-event');
 
-  if (UA.isMobile()) {
+  if (UA.isMobile() || UA.isTablet()) {
     document.querySelector('.canvas-image').classList.add('mobile');
     $triggerEvent.bind('click', function(){
-      App.triggerKeyboardEvent(parseInt($(this).data('key')));
+      PageEvents.triggerKeyboardEvent(parseInt($(this).data('key')));
     });
   } else {
     $triggerEvent.remove();

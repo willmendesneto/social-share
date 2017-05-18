@@ -12,9 +12,9 @@
 
     <title>Social</title>
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
     <!-- build:css({.tmp,app}) css/main.css -->
-    <link rel="stylesheet" type="text/css" href="bower_components/normalize.css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/fullscreen.css" rel="stylesheet">
     <!-- endbuild -->
@@ -28,17 +28,21 @@
       <video autoplay id="video" width="100%" height="100%"></video>
       <canvas id="canvas" class="canvas-image hide" width="640" height="480"></canvas>
     </div>
-    <button class="btn trigger-event fullscreen" data-key="70">FULLSCREEN</button>
-    <button class="btn trigger-event take-picture" data-key="13">TIRAR FOTO</button>
+
+    <div class="btn-content">
+      <button class="btn trigger-event fullscreen" data-key="70">FULLSCREEN</button>
+      <button class="btn trigger-event take-picture" data-key="13">TIRAR FOTO</button>
+    </div>
     <!-- Footer -->
     <!-- build:js js/plugins.js -->
-    <script type="text/javascript" src="bower_components/fastclick/lib/fastclick.js"></script>
-    <script type="text/javascript" src="bower_components/ua.js/src/ua.js"></script>
+    <script type="text/javascript" src="js/fastclick.js"></script>
+    <script type="text/javascript" src="js/ua.js"></script>
     <!-- endbuild -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.3/zepto.min.js"></script>
     <script type="text/javascript">
     /*<![CDATA[*/
-    window.Zepto || document.write('<script type="text/javascript" src="bower_components/zepto/zepto.min.js"><\/script>');
+    window.Zepto || document.write('<script type="text/javascript" src="js/zepto.min.js"><\/script>');
     /*]]>*/
     </script>
 
